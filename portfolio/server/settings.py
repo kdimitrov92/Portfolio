@@ -1,16 +1,6 @@
-"""
-Django settings for portfolio project.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/1.7/topics/settings/
-
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.7/ref/settings/
-"""
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+SERVER_DIR = os.path.dirname(os.path.realpath(__file__))
 
 
 # Quick-start development settings - unsuitable for production
@@ -21,8 +11,7 @@ SECRET_KEY = 'eyuo$kd&g1yf+mr!osu$@hg_4pk@f1%58b7o6am8709zt66jzr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = []
 
@@ -50,9 +39,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'portfolio.urls'
+ROOT_URLCONF = 'server.urls'
 
-WSGI_APPLICATION = 'portfolio.wsgi.application'
+WSGI_APPLICATION = 'server.wsgi.application'
 
 
 # Database
@@ -61,7 +50,7 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(SERVER_DIR, 'db.sqlite3'),
     }
 }
 
@@ -78,8 +67,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.7/howto/static-files/
-
+STATIC_ROOT = os.path.abspath(os.path.join(SERVER_DIR, '..', '..', 'static'))
 STATIC_URL = '/static/'
