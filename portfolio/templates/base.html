@@ -1,0 +1,44 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Portfolio</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+    {% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% endblock %}
+
+    {% block extra-stylesheets %}
+    {% endblock extra-stylesheets %}
+
+    {% block head-javascripts %}    
+    {% endblock head-javascripts %}
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    {% block extrahead %}{% endblock extrahead %}
+
+    <link rel="icon" type="image/png" sizes="64x64" href="{% static "images/favicon-64x64.png" %}">
+  </head>
+<body {% block body-attrs %}{% endblock body-attrs %}>
+    {% include "main_menu.html" %}
+
+    <div class="aux-menu">
+        {% block aux-menu %}{% endblock aux-menu%}
+    </div>
+    <div class="main-content">
+        {% block body-content %}{% endblock body-content %}
+    </div>
+
+    {% block javascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    {% endblock javascripts %}
+
+    {% block extra-javascripts %}
+    {% endblock extra-javascripts%}
+</body>
+</html>
