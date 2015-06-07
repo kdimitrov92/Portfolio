@@ -6,6 +6,7 @@ from django.contrib.auth.models import Permission
 from portfolio.models.photos import Album, Photo
 from portfolio.models.blogs import Blog
 from portfolio.models.comments import PhotoComment, BlogComment
+from portfolio.models.portfolios import Portfolio
 
 
 class MembershipInline(admin.TabularInline):
@@ -45,6 +46,10 @@ class BlogCommentAdmin(admin.ModelAdmin):
     list_display = ('id', 'owner', 'content')
 
 
+class PortfolioAdmin(admin.ModelAdmin):
+    list_display = ('owner',)
+
+
 admin.site.unregister(Group)
 admin.site.register(Group, GroupAdmin)
 admin.site.register(Permission, PermissionAdmin)
@@ -53,3 +58,4 @@ admin.site.register(Photo, PhotoAdmin)
 admin.site.register(Blog, BlogAdmin)
 admin.site.register(PhotoComment, PhotoCommentAdmin)
 admin.site.register(BlogComment, BlogCommentAdmin)
+admin.site.register(Portfolio, PortfolioAdmin)
