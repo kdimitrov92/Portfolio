@@ -1,46 +1,38 @@
 # Portfolio
 
 ###Pages:###
-======
 
-Home Page:
-=========
+###Home Page###
 Shows a different 'new' items related to the current user on the side;
 Shows newest uploaded photos;
 Shows different navigations to the sections of the website;
 
-Profile:
-========
+###Profile###
 Settings for password
 Profile Picture
 Details for user
 
-Photos:
-=======
+###Photos###
 Gallery
 Pages
 Add new photo
 
-Single Photo:
-=============
+###Single Photo###
 Photo
 Details
 Rating
 Comments
 Settings (if owner)
 
-Blogs:
-======
+###Blogs###
 All your posts
 New Post
 
-Single Blog:
-============
+###Single Blog###
 Actual Blog
 Comments
 
-Search:
-=======
+###Search###
 By Category
 By Title
 By Tags
