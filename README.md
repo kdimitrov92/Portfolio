@@ -1,6 +1,8 @@
 # Portfolio
+**Description:**
+The web application, as the name suggests, will be used for image showcasing, blog sharing, and in general to be used as a portfolio by photographers/writers. It allows photos to be uploaded in multiple versions, to be commented and rated. It allows posting of blogs and comments to them as well. Every person will have a public portfolio page that is accessed via their username and showcases their work and gives an access point to everything they have posted.
 
-#Pages:###
+#Pages:
 ##Home Page
 <ul>
 <li>Shows a different 'new' items related to the current user on the side</li>
