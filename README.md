@@ -7,6 +7,12 @@
 <li>Shows newest uploaded photos</li>
 <li>Shows different navigations to the sections of the website</li>
 </ul>
+
+##Portfolio
+<ul>
+<li>Add new blog/photo</li>
+<li>Change Showcased photos</li>
+</ul>
 ##Profile
 <ul>
 <li>Settings for password</li>
