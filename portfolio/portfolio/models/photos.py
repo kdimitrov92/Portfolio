@@ -18,5 +18,6 @@ class Photo(models.Model):
     album = models.ManyToManyField(Album, related_name='photos', blank=True)
     original = models.ForeignKey('self', related_name='alternative_versions', blank=True)
     image = models.ImageField(null=False, blank=False)
+    featured = models.BooleanField(default=False)
 
     tags = TaggableManager()

@@ -1,0 +1,18 @@
+.main-menu .navbar-brand {
+  padding: 17px 45px 17px 25px;
+}
+
+.main-menu .nav {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  color: #555555;
+}
+
+.main-menu .nav li {
+  padding: 0 14px;
+}
+
+.main-menu  .navbar-text {
+  margin-right: 15px;
+}

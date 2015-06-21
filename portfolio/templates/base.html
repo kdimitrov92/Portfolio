@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
     {% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {% endblock %}
 
@@ -26,9 +27,6 @@
 <body {% block body-attrs %}{% endblock body-attrs %}>
     {% include "main_menu.html" %}
 
-    <div class="aux-menu">
-        {% block aux-menu %}{% endblock aux-menu%}
-    </div>
     <div class="main-content">
         {% block body-content %}{% endblock body-content %}
     </div>

@@ -63,6 +63,10 @@ USE_TZ = True
 STATIC_ROOT = os.path.abspath(os.path.join(SERVER_DIR, '..', '..', 'static'))
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = (
+    os.path.abspath( os.path.join( SERVER_DIR, '..', 'static' ) ),
+)
+
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
@@ -88,3 +92,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.tz",
     "django.core.context_processors.request",
 )
+
+MEDIA_URL = ''
+
+IMAGE_URL = '../storage/photos/%s/%s'
+
+DEFAULT_ALBUM = 'Default'
