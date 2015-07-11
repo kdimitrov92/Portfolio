@@ -9,7 +9,8 @@ class Comment(models.Model):
     class Meta:
         abstract = True
 
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
+    date_created = models.DateTimeField(auto_now_add=True)
     content = models.CharField(max_length=120)
     owner = models.ForeignKey(User, related_name='comment_owner')
 

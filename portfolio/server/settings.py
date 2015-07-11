@@ -25,6 +25,7 @@ INSTALLED_APPS = (
 
     'taggit',
 
+    'accounts',
     'portfolio',
 )
 
@@ -64,7 +65,7 @@ STATIC_ROOT = os.path.abspath(os.path.join(SERVER_DIR, '..', '..', 'static'))
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    os.path.abspath( os.path.join( SERVER_DIR, '..', 'static' ) ),
+    os.path.abspath(os.path.join(SERVER_DIR, '..', 'static')),
 )
 
 STATICFILES_FINDERS = (
@@ -93,8 +94,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.request",
 )
 
-MEDIA_URL = ''
-
-IMAGE_URL = '../storage/photos/%s/%s'
+MEDIA_ROOT = 'storage/photos/'
+MEDIA_URL = 'http://localhost:8888/storage/'
 
 DEFAULT_ALBUM = 'Default'
+
+LOGIN_REDIRECT_URL = '/'

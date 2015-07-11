@@ -14,5 +14,16 @@
             {% url 'portfolio.portfolio' as portfolio_url %}
             <li {% if request.path == portfolio_url %}class="active"{% endif %}><a href="{{ portfolio_url }}">Portfolio</a></li>
         </ul>
+
+        <div class='profile-nav'>
+            {% if request.user.is_authenticated %}
+                <span class="navbar-text navbar-right"><a href="{% url 'accounts.logout' %}">Sign Out</a></span>
+                <span class="navbar-text navbar-right">
+                    Signed in as {{ request.user.username }}
+                </span>
+            {% else %}
+                <span class="navbar-text navbar-right"><a href="{% url 'accounts.login' %}">Sign In</a></span>
+            {% endif %}
+        </div>
     </nav>
 </div>

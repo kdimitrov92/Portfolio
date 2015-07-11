@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block body-content %}
+
+<div class="login-container">
+    <div class="login panel center-block">
+        <form class="form" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <div>
+                    <input type="text" class="form-control" name="username" placeholder="Username" value='{{ form.cleaned_data.username }}' autofocus>
+                </div>
+                {{ form.username.errors }}
+            </div>
+            <div class="form-group">
+                <div>
+                    <input type="password" class="form-control" name="password" placeholder="Password">
+                </div>
+                {{ form.password.errors }}
+            </div>
+            {{ form.non_field_errors }}
+            <div class="form-group">
+                <div>
+                    <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock body-content %}

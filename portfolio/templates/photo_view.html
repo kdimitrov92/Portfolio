@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block body-content %}
+    <div class='container'>
+        <div class='row'>
+            <a href="{{ photo.image.url }}">
+                <img class='photo-preview' src="{{ photo.image.url }}">
+            </a>
+        </div>
+        {% if photo.owner.id == request.user.id %}
+            <div class='row photo-owner-nav'>
+                <a class='col-md-3' href="{% url 'portfolio.photo.edit' %}/?photo_id={{photo.id}}">Edit Photo</a>
+                <a class='col-md-3' href="{% url 'portfolio.photo.add-alt' %}/?original={{photo.id}}">Add Alternate Version</a>
+                <a class='col-md-3' href="{% url 'portfolio.photo.remove' %}/?photo_id={{photo.id}}">Delete Photo</a>
+            </div>
+        {% endif %}
+
+        <div class='photo-title'> 
+            {{ photo.name }}
+            {% if liked %}
+                <span class='glyphicon glyphicon-thumbs-up liked'></span>
+            {% else %}
+                <a href="{% url 'portfolio.photo.like' photo.id %}"><span class='glyphicon glyphicon-thumbs-up'></span></a>
+            {% endif %}
+            <span class='like-count'>{{likes}}</span>
+        </div>
+        <div class='photo-description'><span>Description:</span> {{ photo.description }} </div>
+        <div class='alt-versions'>
+                {% for version in alt_versions %}
+                    <a class='alt-version-link' href='{% url "portfolio.photo.view" photo_id=version.id %}'>
+                        <img class='alt-version-img' src="{{ version.image.url }}">
+                    </a>
+                {% endfor %}
+        </div>
+        <div class='photo-comments row'>
+            <div class='row'>
+                <div class='col-md-2'>Comment:</div>
+                <form class='col-md-10' method='POST' action='{% url "portfolio.photo.comment" %}'>
+                    {% csrf_token %}
+                    <input type='hidden' name='photo' value='{{ photo.id }}'>
+                    <input class='col-md-4 comment-box form-control' name='comment'>
+                    <button type='submit' class="comment-button btn btn-primary col-md-4">
+                        Submit Comment
+                    </button>
+                </form> 
+            </div>
+            {% for comment in comments %}
+                <div class='row single-comment'>
+                    <div class='col-md-3'>
+                        <div class='row comment-username'>
+                            <strong>{{comment.owner.username}}:</strong>
+                        </div>
+                        <div class='row comment-date'>
+                            {{comment.date_created}}
+                        </div>
+                    </div>
+                    <div class='comment-content col-md-6'>{{comment.content}}</div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock body-content %}

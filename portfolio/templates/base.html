@@ -26,9 +26,10 @@
   </head>
 <body {% block body-attrs %}{% endblock body-attrs %}>
     {% include "main_menu.html" %}
-
-    <div class="main-content">
-        {% block body-content %}{% endblock body-content %}
+    <div class='col-md-4 col-md-offset-4'>
+        <div class="main-content">
+            {% block body-content %}{% endblock body-content %}
+        </div>
     </div>
 
     {% block javascripts %}

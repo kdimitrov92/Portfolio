@@ -1,3 +1,15 @@
+.main-content {
+  width: 460px;
+}
+
+.login-container {
+  width: 320px;
+}
+
+.profile-nav {
+  padding-right: 30px;
+}
+
 .main-menu .navbar-brand {
   padding: 17px 45px 17px 25px;
 }
@@ -15,4 +27,69 @@
 
 .main-menu  .navbar-text {
   margin-right: 15px;
+}
+
+.container {
+  padding: 0;
+  width: 460px;
+}
+
+.photo-preview {
+  width: 100%;
+  height: 100%;
+}
+
+.photo-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.photo-description {
+  font-size: 15px;
+}
+
+.photo-description span{
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.photo-comments {
+  padding: 20px 0 0 0;
+}
+
+
+.comment-box {
+  width: 65%;
+}
+
+.comment-box, .comment-button {
+  display: inline;
+}
+
+.single-comment {
+  padding: 15px;
+}
+
+.comment-username {
+  text-align: right;
+}
+
+.comment-date {
+  font-size: 10px;
+  text-align: right;
+}
+
+.comment-content {
+  word-wrap: break-word;
+  overflow: hidden;
+  white-space: pre-line;
+}
+
+.liked {
+  color: blue;
+}
+
+.alt-version-img {
+  width: 19%;
+  height: 19%;
 }

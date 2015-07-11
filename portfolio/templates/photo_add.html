@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block body-content %}
+    <div class='container'>
+        {{ form.errors }}
+        <form enctype="multipart/form-data" class='form' role='form' method='post'>{% csrf_token %}
+            {% if original %}
+                <input class='form-control' type='hidden' name='original' value='{{ original }}'>
+            {% endif %}
+
+            <div class="form-group row">
+                <label class="col-md-5 control-label">Name:</label>
+                <div class="col-md-6"><input class='form-control' name='name' value="{{ form.name.value|default_if_none:"" }}"></div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-5 control-label">Description:</label>
+                <div class="col-md-6"><input class='form-control' name='description' value='{{ form.description.value|default_if_none:"" }}'></div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-5 control-label">Image:</label>
+                <div class="col-md-6"><input type="file" class="form-control" name="image"></div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-5 control-label">Album:</label>
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <select name='album' class='form-control'>
+                            {% for album in albums %}
+                                <option value='{{ album.id }}'>{{ album.name }}</option> 
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-5 control-label">Tags</label>
+                <div class="col-md-6"><input class='form-control' name='tags' placeholder='Input tags, separated by commas' value='{{ form.tags.value|default_if_none:"" }}'></div>
+            </div>   
+            <button type='submit' class="standart submit-update btn btn-primary">Submit Photo</button>
+        </form>
+    </div>
+{% endblock body-content %}

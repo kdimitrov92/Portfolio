@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block body-content %}
+    <div class='container'>
+        {{ form.errors }}
+        <form class='form' role='form' method='post'>{% csrf_token %}
+            <input type='hidden' name='photo_id' value='{% if form.photo_id.value %}{{ form.photo_id.value|default_if_none:"" }}{% else %}{{ photo.id }}{% endif %}'>
+            <div class="form-group row">
+                <label class="col-md-5 control-label">Name:</label>
+                <div class="col-md-6"><input class='form-control' name='name' value="{% if form.name.value %}{{ form.name.value|default_if_none:"" }}{% else %}{{ photo.name }}{% endif %}"></div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-5 control-label">Description:</label>
+                <div class="col-md-6"><input class='form-control' name='description' value='{% if form.description.value %}{{ form.description.value|default_if_none:"" }}{% else %}{{ photo.description }}{% endif %}'></div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-5 control-label">Tags</label>
+                <div class="col-md-6"><input class='form-control' name='tags' placeholder='Input tags, separated by commas' value='{% if form.tags.value %}{{ form.tags.value|default_if_none:"" }}{% else %}{{ photo.tags.all|join:", "|default:'' }}{% endif %}'></div>
+            </div>
+            <button type='submit' class="standart submit-update btn btn-primary">Submit Changes</button>
+        </form>
+
+        <form class='form' method="post" class='album-copy' action='{% url "portfolio.photo.copy" photo_id=photo.id%}'>{% csrf_token %}
+            <div class="form-group row">
+                <label class="col-md-5 control-label">Album:</label>
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <input type='hidden' name='previous_page' value='{{request.get_full_path}}'>
+                        <select name='album_name' class='form-control'>
+                            {% for album in albums %}
+                                {% if album not in photo.album.all %}
+                                    <option name='album_name' value='{{ album.name }}'>{{ album.name }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <button type='submit' class="standart submit-update btn btn-primary">Copy Photo</button>
+        </form>
+        <form class='form' method="post" class='album-copy' action='{% url "portfolio.album.add" %}'>{% csrf_token %}
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <input type='hidden' name='previous_page' value='{{request.get_full_path}}'>
+                    <input class='form-control' name='album_name' placeholder='New Album Name'>
+                </div>
+            </div>
+            <button type='submit' class="standart submit-update btn btn-primary">Create Album</button>
+        </form>
+    </div>
+{% endblock body-content %}

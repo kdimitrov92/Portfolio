@@ -1,0 +1,57 @@
+TODO:
+Add Comment Views
+-Comment Photo
+-Comment Blog
+
+Add Blog Views
+-Add Blog Post
+-Edit Blog Post
+-Remove Blog Post
+
+Add Portfolio Views
+-Edit Portfolio
+-Select Pinned
+-Change Photo
+
+Add Search Function:
+-Search by tags, and names
+
+Add Account Views:
+-Register
+-Login
+-Logoff
+-View Profile
+-Edit Profile
+
+
+
+Home Page:
+-Add new photo
+-All Photos
+-All Albums
+-Add Category
+-Add blog
+-All blogs
+-Portfolio
+-Search
+
+All Photos/Albums:
+-link to every photo/album
+
+Single ALbum page:
+-Link to all photos of this album
+
+Single Photo page:
+-Edit(auth)
+-Add alt version(auth)
+-Remove(auth)
+-Add comment
+-Like
+
+Single blog:
+-Add Comment
+-Edit post(auth)
+-Remove(auth)
+
+
+
