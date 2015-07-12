@@ -2,18 +2,20 @@
 
 {% block body-content %}
     <div class='container'>
-        <div class='row'>
-            <div class='col-md-3 centered'><label>Photos:</label></div>
-        </div>
-        <div class='row'>
-            <div class='col-md-3'><a href="{% url 'portfolio.photo.add' %}">Add new photo</a></div>
-        </div>
-        <div class='row'>
-            <div class='col-md-3 centered'><label>Photos:</label></div>
-        </div>
-        <div class='row'>
-            <div class='col-md-3'><a href="{% url 'portfolio.album.add' %}">Add new album</a></div>
-            <div class='col-md-3'><a href="{% url 'portfolio.album.view_all' %}">View all album</a></div>
-        </div>
+        {% if not no_user %}
+            <div class='row'>
+                <div class='col-md-3 centered'><label>Photos:</label></div>
+            </div>
+            <div class='row'>
+                <div class='col-md-4'><a href="{% url 'portfolio.photo.add' %}">Add new photo</a></div>
+                <div class='col-md-4'><a href="{% url 'portfolio.photo.all' username=request.user.username %}">View all photos</a></div>
+            </div>
+            <div class='row'>
+                <div class='col-md-3 centered'><label>Albums:</label></div>
+            </div>
+            <div class='row'>
+                <div class='col-md-4'><a href="{% url 'portfolio.album.view_all' username=request.user.username %}">View all albums</a></div>
+            </div>
+        {% endif %}
     </div>
 {% endblock body-content %}

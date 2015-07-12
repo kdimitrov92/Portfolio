@@ -93,3 +93,10 @@
   width: 19%;
   height: 19%;
 }
+
+.album-copy {
+  border: black solid 1px;
+  padding: 5px;
+  border-radius: 12px;
+  margin-top: 50px;
+}

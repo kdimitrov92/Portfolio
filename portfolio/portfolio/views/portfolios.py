@@ -4,32 +4,26 @@ from django.http import Http404
 from django.shortcuts import render
 from django.views.generic.base import View
 
-from portfolio.models.portfolios import Portfolio
-from portfolio.models.photos import Album, Photo
-from portfolio.models.blogs import Blog
-
 from portfolio.views.base import AuthenticatedView
-
-
-def get_portfolio_context(user):
-    return {
-        'portfolio': Portfolio.objects.get(owner=user),
-        'albums': Album.objects.filter(owner=user),
-        'featured_photos': Photo.objects.filter(owner=user, featured=True),
-        'newest_photos': Photo.objects.filter(owner=user).order_by('-date_created')[:5],
-        'newest_blogs': Blog.objects.filter(owner=user).order_by('-date_created')[:5],
-    }
+from portfolio.logic.portfolios import get_portfolio_context
 
 
 class OwnPortfolioView(AuthenticatedView):
-    TEMPLATE = 'portfolio.html'
+    """
+    A view for a users personal portfolio that can only be accessed if authenticated
+
+    NOTE: This will be updated to an edit portfolio view where only the person accessing it sees
+    an edit form for his own portfolio
+    """
+    TEMPLATE = 'portfolio_view.html'
 
     def get(self, request):
         return render(request, self.TEMPLATE, get_portfolio_context(request.user))
 
 
 class PortfolioView(View):
-    TEMPLATE = 'portfolio.html'
+    """ A view for any persons portfolio that is publically accessable """
+    TEMPLATE = 'portfolio_view.html'
 
     def get(self, request, username):
         try:

@@ -6,6 +6,7 @@ from portfolio.views.base import AuthenticatedView
 
 
 class CommentPhotoView(AuthenticatedView):
+    """ View that handles commenting on a photo """
     def post(self, request):
         comment_content = request.POST.get('comment', '')
         photo = request.POST.get('photo', 0)

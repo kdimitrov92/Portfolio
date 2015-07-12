@@ -17,12 +17,16 @@
                 <label class="col-md-5 control-label">Tags</label>
                 <div class="col-md-6"><input class='form-control' name='tags' placeholder='Input tags, separated by commas' value='{% if form.tags.value %}{{ form.tags.value|default_if_none:"" }}{% else %}{{ photo.tags.all|join:", "|default:'' }}{% endif %}'></div>
             </div>
+            <div class="form-group row">
+                <label class="col-md-5 control-label">Featured?</label>
+                <div class="col-md-6"><input class='form-control' name='featured' type="checkbox" {% if photo.featured %} checked {%endif%}></div>
+            </div>
             <button type='submit' class="standart submit-update btn btn-primary">Submit Changes</button>
         </form>
 
-        <form class='form' method="post" class='album-copy' action='{% url "portfolio.photo.copy" photo_id=photo.id%}'>{% csrf_token %}
+        <form class='form album-copy' method="post" action='{% url "portfolio.photo.copy" photo_id=photo.id %}'>{% csrf_token %}
             <div class="form-group row">
-                <label class="col-md-5 control-label">Album:</label>
+                <label class="col-md-5 control-label">Copy Photo to Album:</label>
                 <div class="col-md-6">
                     <div class="input-group">
                         <input type='hidden' name='previous_page' value='{{request.get_full_path}}'>
@@ -36,16 +40,33 @@
                     </div>
                 </div>
             </div>
-            <button type='submit' class="standart submit-update btn btn-primary">Copy Photo</button>
+            <button type='submit' class="standart submit-update btn btn-primary">Submit</button>
         </form>
-        <form class='form' method="post" class='album-copy' action='{% url "portfolio.album.add" %}'>{% csrf_token %}
+        <form class='form album-copy' method="post" action='{% url "portfolio.album.add" %}'>{% csrf_token %}
             <div class="form-group row">
+                <label class="col-md-5 control-label">Create New Album:</label>
                 <div class="col-md-6">
                     <input type='hidden' name='previous_page' value='{{request.get_full_path}}'>
                     <input class='form-control' name='album_name' placeholder='New Album Name'>
                 </div>
             </div>
-            <button type='submit' class="standart submit-update btn btn-primary">Create Album</button>
+            <button type='submit' class="standart submit-update btn btn-primary">Submit</button>
+        </form>
+        <form class='form album-copy' method="post" action='{% url "portfolio.photo.remove-from-album" photo_id=photo.id%}'>{% csrf_token %}
+            <div class="form-group row">
+                <label class="col-md-5 control-label">Remove Photo from Album:</label>
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <input type='hidden' name='previous_page' value='{{request.get_full_path}}'>
+                        <select name='album_name' class='form-control'>
+                            {% for album in photo.album.all %}
+                                <option name='album_name' value='{{ album.name }}'>{{ album.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <button type='submit' class="standart submit-update btn btn-primary">Submit</button>
         </form>
     </div>
 {% endblock body-content %}

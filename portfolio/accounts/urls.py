@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, url
-
+from portfolio.views.accounts import RegisterView
 
 urlpatterns = patterns(
     '',
@@ -15,4 +15,5 @@ urlpatterns = patterns(
             'next_page': 'portfolio.home'
         },
         name='accounts.logout'),
+    url(r'^register/$', RegisterView.as_view(), name='accounts.register'),
 )

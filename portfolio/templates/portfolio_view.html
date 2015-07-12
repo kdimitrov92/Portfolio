@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block body-content %}
+    <div class='container'>
+        <div class='row'>
+            <div class='col-md-6'>
+                <div class='title'>{{portfolio.owner.username}}'s portfolio page</div>
+                <div class='title-img'>
+                    <a href="{{ portfolio.image.url }}">
+                        <img class='photo-preview' src="{{ portfolio.image.url }}">
+                    </a>
+                </div>
+            </div>
+            <div class='col-md-6'>
+                <div class='single-photo'>
+                    {% for album in albums %}
+                        <a class='alt-version-link' href='{% url "portfolio.album.view" album_id=album.id %}'>{{album.name}}</a>
+                    {% endfor %}
+                </div>             
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-md-6'>
+                <div class='title'>Featured Photos</div>
+                <div class='single-photo'>
+                    {% for photo in featured_photos %}
+                        <a class='alt-version-link' href='{% url "portfolio.photo.view" photo_id=photo.id %}'>
+                            <img class='alt-version-img' src="{{ photo.image.url }}">
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class='col-md-6'>
+                <div class='title'>Newest Photos</div>
+                <div class='single-photo'>
+                    {% for photo in newest_photos %}
+                        <a class='alt-version-link' href='{% url "portfolio.photo.view" photo_id=photo.id %}'>
+                            <img class='alt-version-img' src="{{ photo.image.url }}">
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body-content %}
