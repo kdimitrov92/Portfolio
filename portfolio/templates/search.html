@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block body-content %}
+    <div class='container'>
+        {% for photo in photos %}
+            <a class='photo-result row' href='{% url "portfolio.photo.view" photo_id=photo.id %}'>
+                <div class='col-md-3'>
+                    <img class='photo-result-image' src="{{ photo.image.url }}"/>
+                </div>
+                <div class='col-md-5'>
+                    <div class='row photo-name'>{{photo.name}}</div>
+                    <div class='row photo-description'>{{photo.description}}</div>
+                </div>
+                <div class='col-md-2'>
+                    <h5>Tags:</h5>
+                    <div class='photo-tags'>
+                        {% for tag in photo.tags.all %}
+                            {{tag}}
+                        {% endfor %}
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+        {% if not photos %}
+            <h3>No photos have been found with those search parameters.</h3>
+        {% endif %}
+    </div>
+{% endblock body-content %}

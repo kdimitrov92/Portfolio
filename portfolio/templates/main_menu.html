@@ -4,23 +4,33 @@
     <nav class="navbar navbar-default">
         <div class="navbar-header">
         </div>
-
-        <ul class="nav navbar-nav">
-            {% url 'portfolio.home' as home_url %}
-            <li {% if request.path == home_url %}class="active"{% endif %}><a href="{{ home_url }}">Home</a></li>
-            {% url 'portfolio.portfolio' as portfolio_url %}
-            <li {% if request.path == portfolio_url %}class="active"{% endif %}><a href="{{ portfolio_url }}">Portfolio</a></li>
-        </ul>
-
-        <div class='profile-nav'>
-            {% if request.user.is_authenticated %}
-                <span class="navbar-text navbar-right"><a href="{% url 'accounts.logout' %}">Sign Out</a></span>
-                <span class="navbar-text navbar-right">
-                    Signed in as {{ request.user.username }}
-                </span>
-            {% else %}
-                <span class="navbar-text navbar-right"><a href="{% url 'accounts.login' %}">Sign In</a></span>
-            {% endif %}
+        <div class='col-md-3'>
+            <ul class="nav navbar-nav">
+                {% url 'portfolio.home' as home_url %}
+                <li {% if request.path == home_url %}class="active"{% endif %}><a href="{{ home_url }}">Home</a></li>
+                {% url 'portfolio.portfolio' as portfolio_url %}
+                <li {% if request.path == portfolio_url %}class="active"{% endif %}><a href="{{ portfolio_url }}">Portfolio</a></li>
+            </ul>
+        </div>
+        <div class='col-md-6'>
+            <div class='search-bar'>
+                <form method='GET' action="{% url 'portfolio.search' %}">
+                    <input class='search-box' name='search_parameters' placeholder='Search photos...'>
+                    <button type='submit' class="standart submit-update btn btn-primary">Search</button>
+                </form>
+            </div>
+        </div>
+        <div class='col-md-3 pull-right'>
+            <div class='profile-nav'>
+                {% if request.user.is_authenticated %}
+                    <span class="navbar-text navbar-right"><a href="{% url 'accounts.logout' %}">Sign Out</a></span>
+                    <span class="navbar-text navbar-right">
+                        Signed in as {{ request.user.username }}
+                    </span>
+                {% else %}
+                    <span class="navbar-text navbar-right"><a href="{% url 'accounts.login' %}">Sign In</a></span>
+                {% endif %}
+            </div>
         </div>
     </nav>
 </div>

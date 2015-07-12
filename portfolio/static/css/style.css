@@ -127,3 +127,31 @@
   font-weight: bold;
   font-size: 17px;
 }
+
+.search-bar {
+  margin-top: 5px;
+}
+
+.row.photo-result {
+  padding: 15px;
+}
+
+.photo-result:hover {
+  color: #222222;
+}
+
+.photo-result-image {
+  max-height: 70%;
+  max-width: 70%
+}
+
+.photo-name {
+  font-weight: bold;
+  font-size: 16px;
+  text-align: left;
+}
+
+.photo-description {
+  font-size: 13px;
+  text-align: left;
+}

@@ -9,6 +9,8 @@ from portfolio.views.photos import\
     RemovePhotoFromAlbumView
 from portfolio.views.comments import CommentPhotoView
 from portfolio.views.albums import AllAlbumsView, SingleAlbumView, RemoveAlbumView, CreateNewAlbumView
+from portfolio.views.search import SearchView
+
 
 urlpatterns = patterns(
     '',
@@ -33,5 +35,7 @@ urlpatterns = patterns(
     url(r'^photos/comment$', CommentPhotoView.as_view(), name='portfolio.photo.comment'),
     url(r'^photos/copy/(?P<photo_id>.+)$', CopyPhotoView.as_view(), name='portfolio.photo.copy'),
     url(r'^photos/all/(?P<username>.+)$', AllPhotosView.as_view(), name='portfolio.photo.all'),
+
+    url(r'^search/', SearchView.as_view(), name='portfolio.search'),
 
 )
