@@ -20,7 +20,7 @@
             {% if liked %}
                 <span class='glyphicon glyphicon-thumbs-up liked'></span>
             {% else %}
-                <a href="{% url 'portfolio.photo.like' photo.id %}"><span class='glyphicon glyphicon-thumbs-up'></span></a>
+                <a href="{% url 'portfolio.photo.like' photo.id %}" {% if request.user.is_anonymous %}class='disabled'{%endif%}><span class='glyphicon glyphicon-thumbs-up'></span></a>
             {% endif %}
             <span class='like-count'>{{likes}}</span>
         </div>

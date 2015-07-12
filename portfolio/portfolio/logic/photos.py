@@ -35,9 +35,14 @@ def get_single_photo_context(request, photo_id):
     except ObjectDoesNotExist:
         raise Http404
 
+    if not request.user.is_anonymous():
+        liked = request.user.liked_by_set.filter(id=photo.id).exists()
+    else:
+        liked = False
+
     return {
         'photo': photo,
-        'liked': request.user.liked_by_set.filter(id=photo.id).exists(),
+        'liked': liked,
         'likes': photo.liked.count(),
         'alt_versions': Photo.objects.filter(original=photo),
         'comments': PhotoComment.objects.filter(photo=photo).order_by('-date_created').select_related('owner'),
