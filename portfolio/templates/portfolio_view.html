@@ -3,7 +3,7 @@
 {% block body-content %}
     <div class='container'>
         <div class='row'>
-            <div class='col-md-6'>
+            <div class='col-md-6 portfolio-cell'>
                 <div class='title'>{{portfolio.owner.username}}'s portfolio page</div>
                 <div class='title-img'>
                     <a href="{{ portfolio.image.url }}">
@@ -11,8 +11,9 @@
                     </a>
                 </div>
             </div>
-            <div class='col-md-6'>
-                <div class='single-photo'>
+            <div class='col-md-6 portfolio-cell'>
+                <div class='title'>Albums</div>
+                <div class='all-albums'>
                     {% for album in albums %}
                         <a class='alt-version-link' href='{% url "portfolio.album.view" album_id=album.id %}'>{{album.name}}</a>
                     {% endfor %}
@@ -20,7 +21,7 @@
             </div>
         </div>
         <div class='row'>
-            <div class='col-md-6'>
+            <div class='col-md-6 portfolio-cell'>
                 <div class='title'>Featured Photos</div>
                 <div class='single-photo'>
                     {% for photo in featured_photos %}
@@ -30,7 +31,7 @@
                     {% endfor %}
                 </div>
             </div>
-            <div class='col-md-6'>
+            <div class='col-md-6 portfolio-cell'>
                 <div class='title'>Newest Photos</div>
                 <div class='single-photo'>
                     {% for photo in newest_photos %}

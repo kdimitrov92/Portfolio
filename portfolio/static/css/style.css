@@ -1,5 +1,5 @@
 .main-content {
-  width: 460px;
+  width: 960px;
 }
 
 .login-container {
@@ -31,7 +31,8 @@
 
 .container {
   padding: 0;
-  width: 460px;
+  margin: 0;
+  width: 100%;
 }
 
 .photo-preview {
@@ -99,4 +100,30 @@
   padding: 5px;
   border-radius: 12px;
   margin-top: 50px;
+}
+
+
+.all-albums a {
+  padding-left: 3px;
+  padding-right: 5px;
+  border-right: black solid 1px;
+}
+
+.all-albums a:last-child {
+  border-right: none;
+}
+
+.portfolio-cell {
+  min-height: 150px;
+  width: 40%;
+  padding: 10px;
+}
+
+.portfolio-cell:hover {
+  background-color: #EEEEEE;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 17px;
 }

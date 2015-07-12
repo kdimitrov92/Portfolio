@@ -40,6 +40,7 @@ class RemoveAlbumView(AuthenticatedView):
     def get(self, request):
         try:
             album = Album.objects.get(id=request.GET.get('album_id', None), owner=request.user)
+            album.clear()
             album.delete()
 
             return redirect('portfolio.album.view_all')
@@ -51,11 +52,11 @@ class CreateNewAlbumView(AuthenticatedView):
     """ View that handles the creation of an album """
     def post(self, request):
         album_name = request.POST.get('album_name', '')
-        if Album.objects.filter(owner=request.user, name=album_name).exists():
+
+        if not album_name or Album.objects.filter(owner=request.user, name=album_name).exists():
             return redirect(request.POST.get('previous_page', '/'))
 
         album = Album(name=album_name, owner=request.user)
-        album.clear()
-        album.delete()
+        album.save()
 
         return redirect(request.POST.get('previous_page', '/'))

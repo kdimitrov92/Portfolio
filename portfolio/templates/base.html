@@ -22,11 +22,10 @@
 
     {% block extrahead %}{% endblock extrahead %}
 
-    <link rel="icon" type="image/png" sizes="64x64" href="{% static "images/favicon-64x64.png" %}">
   </head>
 <body {% block body-attrs %}{% endblock body-attrs %}>
     {% include "main_menu.html" %}
-    <div class='col-md-4 col-md-offset-4'>
+    <div class='col-md-4 col-md-offset-2'>
         <div class="main-content">
             {% block body-content %}{% endblock body-content %}
         </div>
