@@ -13,5 +13,4 @@ class SearchView(View):
         if not search_parameters:
             return redirect('portfolio.home')
 
-        print(search_parameters)
         return render(request, self.TEMPLATE, get_search_context(search_parameters))
